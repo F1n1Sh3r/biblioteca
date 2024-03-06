@@ -1,0 +1,1 @@
+CREATE TABLE `biblioteca`.`livros` (`id` INT(12) NOT NULL , `nome` VARCHAR(64) NOT NULL , `autor` VARCHAR(64) NOT NULL , `editora` INT(64) NOT NULL , `ano` INT(16) NOT NULL , `isbn` VARCHAR(32) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
