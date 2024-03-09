@@ -4,12 +4,17 @@
 /node_modules
 /.pnp
 .pnp.js
-
+package.json
 # testing
 /coverage
 
 # production
 /build
+/dist
+./package-lock.json
+/buil-utils
+
+./yarn.lock
 
 # misc
 .DS_Store
