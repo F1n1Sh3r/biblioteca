@@ -2,15 +2,20 @@
 
 # dependencies
 /node_modules
-package-lock.json
+/.env.example
+\.env.example
 /.pnp
 .pnp.js
-
+package.json
 # testing
 /coverage
 
 # production
 /build
+/dist
+/package-lock.json
+/buil-utils
+./yarn.lock
 
 # misc
 .DS_Store
