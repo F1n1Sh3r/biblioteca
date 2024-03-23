@@ -6,7 +6,7 @@ interface LivrosAttributes {
     nome: string;
     autor: string;
     editora: string;
-    ano: number;
+    ano: string;
     isbn: string;
 }
 
@@ -19,7 +19,7 @@ interface Livros {
     nome: string;
     autor: string;
     editora: string;
-    ano: number;
+    ano: string;
     isbn: string;
 }
 
@@ -32,7 +32,7 @@ class Livros extends Model<LivrosAttributes, LivrosInput> implements Livros {
     nome!: string
     editora!: string
     autor!: string;
-    ano!: number;
+    ano!: string;
     isbn!: string
 }
 

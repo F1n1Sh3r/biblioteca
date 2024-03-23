@@ -2,14 +2,15 @@ import { Application, Request, Response } from 'express'
 import express = require('express');
 import routes from './api/routes/'
 import dbInit from './db/init'
-
+const cors = require('cors');
 dbInit()
 
-const port = 3000
+const port = 9000
 
 export const get = () => {
     const app: Application = express()
 
+    app.use(cors());
     // Body parsing Middleware
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));

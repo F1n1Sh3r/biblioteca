@@ -13,7 +13,6 @@ export const update = async (id: number, payload: UpdateLivroDTO): Promise<Livro
 }
 
 export const getById = async (id: number): Promise<Livro> => {
-    console.log("mapper", id)
     return mapper.toLivros(await service.getById(id))
 }
 

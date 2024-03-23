@@ -38,6 +38,7 @@
     "react-scripts": "^5.0.1",
     "rimraf": "^5.0.5",
     "semantic-ui-react": "^2.1.5",
+    "sweetalert2": "^11.4.18",
     "web-vitals": "^2.1.4",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-nano": "^1.1.1",
