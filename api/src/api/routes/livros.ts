@@ -16,9 +16,6 @@ livrossRouter.get('/:id', async (req: Request, res: Response) => {
 
 livrossRouter.put('/:id', async (req: Request, res: Response) => {
     const id = Number(req.params.id)
-    if (isNaN(id) || isEmpty(id)) {
-        return res.status(400).send('ID inválido')
-    }
     const payload:UpdateLivroDTO = req.body
     
     const result = await livrosController.update(id, payload)
@@ -27,9 +24,7 @@ livrossRouter.put('/:id', async (req: Request, res: Response) => {
 
 livrossRouter.delete('/:id', async (req: Request, res: Response) => {
     const id = Number(req.params.id)
-        if (isNaN(id)) {
-        return res.status(400).send('ID inválido')
-    }
+     
     const result = await livrosController.deleteById(id)
     return res.status(204).send({
         success: result

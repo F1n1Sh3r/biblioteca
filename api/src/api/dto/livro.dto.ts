@@ -5,7 +5,7 @@ export type CreateLivroDTO = {
     nome: string;
     editora: string;
     autor: string;
-    ano: number;
+    ano: string;
     isbn: string;
 }
 

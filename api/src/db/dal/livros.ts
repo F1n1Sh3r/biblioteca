@@ -24,7 +24,6 @@ export const findOrCreate = async (payload: LivrosInput): Promise<LivroOutput> =
 
 export const update = async (id: number, payload: Partial<LivrosInput>): Promise<LivroOutput> => {
     const livro = await Livros.findByPk(id)
-
     if (!livro) {
         // @todo throw custom error
         throw new Error('not found')

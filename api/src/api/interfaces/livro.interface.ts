@@ -3,6 +3,6 @@ export interface Livro {
   nome?: string
   editora?: string
   autor?: string
-  ano?: number
+  ano?: string
   isbn?: string
 }
