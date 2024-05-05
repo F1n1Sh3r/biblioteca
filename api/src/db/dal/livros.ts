@@ -54,9 +54,8 @@ export const deleteById = async (id: number): Promise<boolean> => {
 export const getAll = async (filters?: GetAllLivrosFilters): Promise<LivroOutput[]> => {
     return Livros.findAll({
         where: {
-            ...(filters?.isDeleted && {deletedAt: {[Op.not]: null}})
+            ...((filters?.isDeleted || filters?.includeDeleted) && {paranoid: false})
         },
-        ...((filters?.isDeleted || filters?.includeDeleted) && {paranoid: true})
+       
     })
 }
-

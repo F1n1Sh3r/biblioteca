@@ -28,6 +28,11 @@ export interface LivrosInput extends Optional<LivrosAttributes, 'id'> {}
 export interface LivroOutput extends Required<LivrosAttributes> {}
 
 class Livros extends Model<LivrosAttributes, LivrosInput> implements Livros {
+
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
+    public readonly deletedAt!: Date;
+
     id!: number
     nome!: string
     editora!: string
@@ -63,8 +68,7 @@ Livros.init({
         allowNull: false
     }
 }, {
-    sequelize: sequelizeConnection,
-    paranoid: true
+    sequelize: sequelizeConnection
   })
 
 export default Livros
