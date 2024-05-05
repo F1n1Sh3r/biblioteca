@@ -14,25 +14,34 @@ const Dashboard = ({ setIsAuthenticated }) => {
   const [selectedLivros, setSelectedLivros] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  
-  useEffect(() => {
-    retrieveLivros();
-  }, []);
-
   const retrieveLivros = () => {
+
     LivrosDataService.getAll()
       .then(response => {
         setLivros(response.data)
+        livros = response.data
       })
       .catch(e => {
         console.log(e);
       });
   };
+
+  useEffect(() => {
+    retrieveLivros();
+  }, []);
+
+  useState(() => {
+  }, []);
+
+
+
   
   const handleEdit = id => {
     const [livro] = livros.filter(livro => livro.id === id);
     setSelectedLivros(livro);
     setIsEditing(true);
+   
+  
   };
 
   const handleDelete = id => {

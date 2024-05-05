@@ -33,7 +33,7 @@ const LivrosService = {
   getAll,
   get,
   create,
-  update,
+  update,   
   remove,
   removeAll,
   findById

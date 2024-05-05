@@ -1,9 +1,7 @@
 import React from 'react';
 
 const Table = ({ livros, handleEdit, handleDelete }) => {
-//  livros.forEach((livro, i) => {
-//    console.log(livro.id);
-//  });  
+
   
   return (
     
