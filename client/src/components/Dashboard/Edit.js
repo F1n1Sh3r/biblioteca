@@ -10,6 +10,9 @@ const Edit = ({ livros, selectedLivros, setLivros, setIsEditing }) => {
   const [editora, setEditora] = useState(selectedLivros.editora);
   const [ano, setAno] = useState(selectedLivros.ano);
   const [isbn, setIsbn] = useState(selectedLivros.isbn);
+  
+
+  
 
   const handleUpdate = e => {
     e.preventDefault();
@@ -22,26 +25,11 @@ const Edit = ({ livros, selectedLivros, setLivros, setIsEditing }) => {
         showConfirmButton: true,
       });
     }
-
-    const livro = {
-      id,
-      nome,
-      autor,
-      editora,
-      ano,
-      isbn,
-    };
     
-    for (let i = 0; i < livros.length; i++) {
-  
-      if ((i + 1) === livro.length) {
-        livros.splice(i, livros[i].id, livro);
-        break;
-      }
-    }
+    //localStorage.setItem('livros_data', JSON.stringify(livro));
 
-    localStorage.setItem('livros_data', JSON.stringify(livros));
-    setLivros(livros);
+    //localStorage.setItem('livros_data', JSON.stringify(livros));
+    setLivros(selectedLivros);
     setIsEditing(false);
 
     Swal.fire({
@@ -51,37 +39,19 @@ const Edit = ({ livros, selectedLivros, setLivros, setIsEditing }) => {
       showConfirmButton: false,
       timer: 1500,
     });
+
+
   };
 
 
-
-  const data = {
-    id: {id},
-    nome: {nome},
-    autor: {autor},
-    editora: {editora},
-    ano: livros.ano,
-    isbn: livros.isbn,
+  const livro = {
+    id,
+    nome,
+    autor,
+    editora,
+    ano,
+    isbn,
   };
-
-  const updateLivros = () => {
-    var data = {
-      nome: {nome}.value,
-      autor:selectedLivros.autor,
-      editora:selectedLivros.editora,
-      ano:selectedLivros.ano,
-      isbn:selectedLivros.isbn,
-    };
-
-    LivrosDataService.update(selectedLivros.id, {id})
-      .then(response => {
-        setLivros({ ...selectedLivros});
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
   return (
     <div className="small-container">
       <form onSubmit={handleUpdate}>
@@ -120,17 +90,21 @@ const Edit = ({ livros, selectedLivros, setLivros, setIsEditing }) => {
         />
         <label htmlFor="isbn">ISBN</label>
         <input
-          id="ISBN"
+          id="isbn"
           type="text"
-          name="ISBN"
+          name="isbn"
           value={isbn}
           onChange={e => setIsbn(e.target.value)}
         />
         <div style={{ marginTop: '30px' }}>
           <input type="submit" value="Update" 
-          onClick={() => {
-              updateLivros();
-          }}
+              onClick={() => {
+                LivrosDataService.update(selectedLivros.id,  livro)
+                const index = livros.indexOf(selectedLivros.id);
+                livros.splice(index)
+                livros.push(livro);
+                setIsEditing(false)
+            }}
           />
           <input
             style={{ marginLeft: '12px' }}
